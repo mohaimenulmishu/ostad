@@ -72,10 +72,13 @@ class _SelectScreenState extends State<SelectScreen> {
               return AlertDialog(
                 title: const Text('Selected Items'),
                 content:
-                Text('Number of selected items: ${selectedItems.length}'),
+                    Text('Number of selected items: ${selectedItems.length}'),
                 actions: <Widget>[
                   TextButton(
-                    child: const Text('Close',style: TextStyle(color: Colors.blue),),
+                    child: const Text(
+                      'Close',
+                      style: TextStyle(color: Colors.blue),
+                    ),
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
