@@ -11,17 +11,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: ColorChangeScreen(),
+      home: SelectScreen(),
     );
   }
 }
 
-class ColorChangeScreen extends StatefulWidget {
+class SelectScreen extends StatefulWidget {
   @override
-  _ColorChangeScreenState createState() => _ColorChangeScreenState();
+  _SelectScreenState createState() => _SelectScreenState();
 }
 
-class _ColorChangeScreenState extends State<ColorChangeScreen> {
+class _SelectScreenState extends State<SelectScreen> {
   final List<String> items = [
     'Item 1',
     'Item 2',
@@ -29,11 +29,13 @@ class _ColorChangeScreenState extends State<ColorChangeScreen> {
     'Item 4',
     'Item 5',
     'Item 6',
+    'Item 7',
+    'Item 8',
   ];
 
   List<String> selectedItems = [];
 
-  void Selected(bool isSelected, int index) {
+  void selected(bool isSelected, int index) {
     if (isSelected) {
       selectedItems.remove(items[index]);
     } else {
@@ -45,7 +47,7 @@ class _ColorChangeScreenState extends State<ColorChangeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Selection Screen '),
+        title: const Text('Selection Screen '),
       ),
       body: ListView.builder(
         itemCount: items.length,
@@ -56,7 +58,7 @@ class _ColorChangeScreenState extends State<ColorChangeScreen> {
             tileColor: isSelected ? Colors.blue : null,
             onTap: () {
               setState(() {
-                Selected(isSelected, index);
+                selected(isSelected, index);
               });
             },
           );
@@ -68,12 +70,12 @@ class _ColorChangeScreenState extends State<ColorChangeScreen> {
             context: context,
             builder: (context) {
               return AlertDialog(
-                title: Text('Selected Items'),
+                title: const Text('Selected Items'),
                 content:
                 Text('Number of selected items: ${selectedItems.length}'),
                 actions: <Widget>[
                   TextButton(
-                    child: Text('Close'),
+                    child: const Text('Close',style: TextStyle(color: Colors.blue),),
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
