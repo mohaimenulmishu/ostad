@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ostad_submission_flutter/todo.dart';
+import 'todo.dart';
 
 class AddNewTaskModal extends StatefulWidget {
   const AddNewTaskModal({

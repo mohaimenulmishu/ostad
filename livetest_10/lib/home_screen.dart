@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'intl.dart';
+import 'package:intl/intl.dart';
 import 'todo.dart';
 import 'update_task_modal.dart';
 import 'add_new_task_modal.dart';
