@@ -15,7 +15,7 @@ class AddNewTaskModal extends StatefulWidget {
 
 class _AddNewTaskModalState extends State<AddNewTaskModal> {
   final TextEditingController todoTEController = TextEditingController();
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
