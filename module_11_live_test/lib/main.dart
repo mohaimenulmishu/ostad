@@ -60,7 +60,7 @@ class MyApp extends StatelessWidget {
               subtitle: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  
+                  Text('Temperature: ${weather.temperature}°C'),
                   Text('Condition: ${weather.condition}'),
                   Text('Humidity: ${weather.humidity}%'),
                   Text('Wind Speed: ${weather.windSpeed} m/s'),
