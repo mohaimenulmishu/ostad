@@ -1,7 +1,10 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:task_manager_app/app.dart';
 import 'package:task_manager_app/data/models/user_model.dart';
+import 'package:task_manager_app/ui/screens/login_screen.dart';
 
 class Auth {
   static String? token;
@@ -13,6 +16,13 @@ class Auth {
     await sharedPreferences.setString("token", t);
     await sharedPreferences.setString("user", jsonEncode(model.toJson()));
     token = t;
+    user = model;
+  }
+
+  static Future<void> updateUserInformation(UserModel model) async {
+    final SharedPreferences sharedPreferences =
+        await SharedPreferences.getInstance();
+    await sharedPreferences.setString("user", jsonEncode(model.toJson()));
     user = model;
   }
 
@@ -37,5 +47,13 @@ class Auth {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     await sharedPreferences.clear();
     token = null;
+  }
+
+  static Future<void> backToLogin() async {
+    await Auth.clearUserAuthState();
+    Navigator.pushAndRemoveUntil(
+        TaskManagerApp.navigatorKey.currentContext!,
+        MaterialPageRoute(builder: (context) => const LoginScreen()),
+        (route) => false);
   }
 }
