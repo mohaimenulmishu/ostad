@@ -46,7 +46,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         hintText: "Email",
                       ),
                       validator: (String? value){
-                        if(value?.trim().isNotEmpty??true){
+                        if(value?.trim().isEmpty??true){
                           return "Enter your valid email";
                         }
                         return null;
@@ -60,7 +60,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         hintText: "First Name",
                       ),
                       validator: (String?value){
-                        if(value?.trim().isNotEmpty??true){
+                        if(value?.trim().isEmpty??true){
                           return "Enter your first name";
                         }
                         return null;
@@ -74,7 +74,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         hintText: "Last Name",
                       ),
                       validator: (String? value){
-                        if(value?.trim().isNotEmpty??true){
+                        if(value?.trim().isEmpty??true){
                           return "Enter your last name";
                         }
                         return null;
@@ -83,17 +83,26 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     const SizedBox(height: 16),
                     TextFormField(
+                      controller: _mobileTEController,
                       keyboardType: TextInputType.number,
                       decoration: const InputDecoration(
                         hintText: "Mobile",
                       ),
+                        validator: (String? value){
+                          if(value?.trim().isEmpty??true){
+                            return "Enter your mobile number";
+                          }
+                          return null;
+                        },
                     ),
                     const SizedBox(height: 16),
                     TextFormField(
+                      controller: _passwordTEController,
                       obscureText: true,
                       decoration: const InputDecoration(
                         hintText: "Password",
                       ),
+                      
                     ),
                     const SizedBox(
                       height: 16,
@@ -101,7 +110,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          if(_formKey.currentState!.validate()){
+
+                          }
+                        },
                         child: const Icon(Icons.arrow_circle_right_outlined),
                       ),
                     ),
@@ -139,4 +152,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
       ),
     );
   }
+@override
+  void dispose() {
+    _emailTEController.dispose();
+    _firstNameTEController.dispose();
+    _lastNameTEController.dispose();
+    _mobileTEController.dispose();
+    _passwordTEController.dispose();
+    super.dispose();
+  }
+
 }
